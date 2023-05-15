@@ -1,7 +1,7 @@
 
-import * as THREE from "../node_modules/three/build/three.module.js";
-import { OrbitControls } from "../node_modules/three/examples/jsm/controls/OrbitControls.js";
-import { gsap } from "../node_modules/gsap/index.js";
+import * as THREE from "../js/three.module.js";
+import { OrbitControls } from "../js/OrbitControls.js";
+import { gsap } from "../js/gsap-core.js";
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
 const box = document.querySelector(".box");
@@ -15,7 +15,7 @@ const scene = new THREE.Scene();
 
 const fontLoader = new THREE.FontLoader();
 const fontUrl =
-  "https://search.heng.ink/json/fonts.json";
+  "../luopan/json/fonts.json";
 let font;
 const loadFont = new Promise((resolve, reject) => {
   fontLoader.load(
