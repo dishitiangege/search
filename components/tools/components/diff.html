@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Small Tool</title>
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/diffview.css" rel="stylesheet">
+    <link href="css/codemirror.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/html.css" rel="stylesheet">
+    <link href="css/annotated.css" rel="stylesheet">
+    <style type="text/css">
+       hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        }
+        .textInput {
+            display: block;
+            width: 50%;
+            padding:10px;
+            float: left;
+        }
+        
+        label:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+       
+        .viewType {
+            text-align: right;
+        }
+        #diffoutput {
+            width: 100%;
+        }
+
+        #diffoutput table {/**div里面的table居中*/
+            margin:0 auto;
+        }
+        table.diff {
+            word-wrap:break-word;word-break:break-all;
+        }
+        table.diff th {
+            white-space: nowrap;
+        }
+        </style>
+</head>
+<body>
+<nav class="navbar navbar-default" id="navbarHeader">
+    <a href="../index.html" class="navbar-back" id="goback"> <span class="goback"></span> 返回工具列表</a>
+    <a class="navbar-brand pull-right" href="#" id="title_btn">文本/JSON diff</a>
+</nav>
+<div class="tool-body" id="toolBody">
+	<ul id="myTab" class="nav nav-tabs">
+        <li class="active">
+            <a href="#text_diff" data-toggle="tab">
+                文本对比
+           </a>
+        </li>
+        <li>
+            <a href="#json_diff" data-toggle="tab">
+                JSON对比
+           </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="text_diff">
+            <div class="textInput" >
+                <textarea id="baseText" class="form-control" cols="20" rows="15" placeholder="文本一"></textarea>
+            </div>
+            <div class="textInput" >
+                <textarea id="newText" class="form-control" cols="20" rows="15" placeholder="文本二"></textarea>
+            </div>
+            <div class="viewType">
+                <strong>Context size (optional):</strong> <input type="text" class="form-control" id="contextSize" value="" style="width:10%;height:28px;display:inline-block">
+                &nbsp; &nbsp;
+                <input type="radio" name="_viewtype" id="sidebyside" > <label for="sidebyside">Side by Side Diff</label>
+                &nbsp; &nbsp;
+                <input type="radio" name="_viewtype" id="inline" > <label for="inline">Inline Diff</label>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="button" id="clean_btn" value="清空结果" class="btn btn-sm btn-danger pull-right"/>
+            </div>
+        
+            <hr>
+
+            <div id="diffoutput"> </div>
+        </div>
+        <div class="tab-pane fade" id="json_diff">
+            <div class="textInput" >
+                <textarea id="baseJson" class="form-control" cols="20" rows="15" placeholder="Json 1"></textarea>
+            </div>
+            <div class="textInput" >
+                <textarea id="newJson" class="form-control" cols="20" rows="15" placeholder="Json 2"></textarea>
+            </div>
+            <div class="viewType">
+                <input type="button" id="json_diff_btn" value="visual diff" class="btn btn-sm btn-info" /> 
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="button" id="clean_btn2" value="清空结果" class="btn btn-sm btn-danger pull-right"/>
+            </div>
+        
+            <hr>
+
+            <div id="visual"></div>  
+        </div>
+    </div>
+</div>
+
+<div class="text-muted small" style="text-align:center;" id="navbarFooter">
+    ©2022 Hengzai Small Tool V1.0.0
+</div>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/lib/diffview.js"></script>
+<script type="text/javascript" src="js/lib/difflib.js"></script>
+<script type="text/javascript" src="js/lib/jsondiffpatch.umd.min.js"></script>
+<script type="text/javascript" src="js/diff.js"></script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?89459179d6d45c4a7d450e4e4619bfc9";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>
